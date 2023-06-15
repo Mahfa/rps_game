@@ -1,19 +1,17 @@
 import 'package:flame/components.dart';
-import 'package:flame/widgets.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
-import 'package:rps_game/components/paper.dart';
-import 'package:rps_game/components/rock.dart';
+import 'package:rps_game/game/components/paper.dart';
+import 'package:rps_game/game/components/scissors.dart';
+import 'package:rps_game/game/world/game_world.dart';
 
-import '../forge2d_game_world.dart';
-
-class Scissors extends BodyComponent<Forge2dGameWorld> with ContactCallbacks {
+class Rock extends BodyComponent<GameWorld> with ContactCallbacks {
   final Vector2 position;
 
-  Scissors({required this.position});
+  Rock({required this.position});
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    final sprite = Sprite(gameRef.images.fromCache('scissors.png'));
+    final sprite = Sprite(gameRef.images.fromCache('rock.png'));
     add(
       SpriteComponent(
         sprite: sprite,
@@ -43,13 +41,14 @@ class Scissors extends BodyComponent<Forge2dGameWorld> with ContactCallbacks {
   void endContact(Object other, Contact contact) {
     super.endContact(other, contact);
     try{
-      if(other is Paper){
+      if(other is Scissors){
         other.removeFromParent();
       }
-      if(other is Rock){
+      if(other is Paper){
         removeFromParent();
       }
     }catch(e){
+      // ignore: avoid_print
       print(e);
     }
   }

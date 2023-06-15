@@ -1,12 +1,10 @@
 import 'package:flame/components.dart';
-import 'package:flame/widgets.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
-import 'package:rps_game/components/rock.dart';
-import 'package:rps_game/components/scissors.dart';
+import 'package:rps_game/game/components/rock.dart';
+import 'package:rps_game/game/components/scissors.dart';
+import 'package:rps_game/game/world/game_world.dart';
 
-import '../forge2d_game_world.dart';
-
-class Paper extends BodyComponent<Forge2dGameWorld> with ContactCallbacks {
+class Paper extends BodyComponent<GameWorld> with ContactCallbacks {
   final Vector2 position;
 
   Paper({required this.position});
@@ -50,6 +48,7 @@ class Paper extends BodyComponent<Forge2dGameWorld> with ContactCallbacks {
         removeFromParent();
       }
     }catch(e){
+      // ignore: avoid_print
       print(e);
     }
   }

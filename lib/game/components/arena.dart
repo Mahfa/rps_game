@@ -1,8 +1,8 @@
 import 'package:flame_forge2d/flame_forge2d.dart';
+import 'package:rps_game/game/world/game_world.dart';
 
-import '../forge2d_game_world.dart';
 
-class Arena extends BodyComponent<Forge2dGameWorld> {
+class Arena extends BodyComponent<GameWorld> {
 
   late Vector2 arenaSize;
 
