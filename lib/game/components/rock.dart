@@ -15,7 +15,7 @@ class Rock extends BodyComponent<GameWorld> with ContactCallbacks {
     add(
       SpriteComponent(
         sprite: sprite,
-        size: Vector2(2, 2),
+        size: Vector2(0.5, 0.5),
         anchor: Anchor.center,
       ),
     );
@@ -28,7 +28,7 @@ class Rock extends BodyComponent<GameWorld> with ContactCallbacks {
 
     final rock = world.createBody(bodyDef);
 
-    final shape = PolygonShape()..setAsBoxXY(1.0, 1.0);
+    final shape = PolygonShape()..setAsBoxXY(0.5, 0.5);
 
     final fixtureDef = FixtureDef(shape)
       ..restitution = 1.0
